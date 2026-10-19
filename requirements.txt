@@ -1,0 +1,7 @@
+twitchio==2.10.0
+python-dotenv>=1.0.0
+aiohttp>=3.9.0
+winrt-Windows.Media.Control==3.2.1; sys_platform == "win32"
+winrt-Windows.Foundation==3.2.1; sys_platform == "win32"
+winrt-Windows.Foundation.Collections==3.2.1; sys_platform == "win32"
+winrt-Windows.Storage.Streams==3.2.1; sys_platform == "win32"

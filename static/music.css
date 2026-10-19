@@ -1,0 +1,40 @@
+@font-face { font-family: Golos; src: url('/static/fonts/golos-cyrillic.woff2') format('woff2'); font-weight: 400 900; unicode-range: U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: Golos; src: url('/static/fonts/golos-latin.woff2') format('woff2'); font-weight: 400 900; }
+.music-overlay { margin: 0; padding: 12px; background: transparent; overflow: hidden; font-family: Golos, sans-serif; }
+.now-playing { display: flex; align-items: center; box-sizing: border-box; gap: 18px; width: 496px; max-width: 100%; padding: 22px; border: 1px solid #b7efd42c; border-radius: 20px; background: linear-gradient(120deg,#18271ff5,#101915f5); color: #f2faf5; box-shadow: 0 6px 16px #0003; }
+.now-playing[hidden] { display: none; }
+.music-disc { display: grid; place-items: center; width: 74px; height: 74px; flex-shrink: 0; border-radius: 50%; border: 1px solid #a9e8cb44; background: repeating-radial-gradient(circle,#182f24 0 3px,#234333 4px 5px); }
+.music-disc span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #a9e8cb; color: #172b20; font-size: 20px; }
+.music-artwork { position: relative; width: 74px; height: 74px; flex-shrink: 0; }
+.music-artwork img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 12px; background: #18271f; }
+.music-artwork img[hidden] { display: none; }
+.music-details { min-width: 0; flex: 1; }
+.music-eyebrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #a9e8cb; font-size: 9px; font-weight: 600; letter-spacing: .15em; }
+.now-playing h1 { margin: 8px 0 5px; font-size: 20px; line-height: 1.25; font-weight: 600; letter-spacing: -.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.now-playing p { margin: 0; color: #a5bbae; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.music-timeline { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.music-timeline[hidden] { display: none; }
+.music-progress { height: 3px; background: #a9e8cb20; border-radius: 4px; flex: 1; overflow: hidden; }
+.music-progress span { display: block; height: 100%; width: 0; background: #a9e8cb; }
+#track-time { color: #839c8e; font-size: 9px; font-variant-numeric: tabular-nums; }
+.music-bars { display: flex; align-items: center; gap: 3px; height: 14px; }
+.music-bars i { width: 3px; height: 12px; background: #a9e8cb; border-radius: 2px; animation: music-wave .9s ease-in-out infinite alternate; }
+.music-bars i:nth-child(2) { animation-delay: -.4s; }
+.music-bars i:nth-child(3) { animation-delay: -.7s; }
+.music-bars i:nth-child(4) { animation-delay: -.2s; }
+.is-paused .music-bars i { animation: none; height: 3px; }
+@keyframes music-wave { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .music-bars i { animation: none; } }
+@media (max-width: 400px) { .now-playing { padding: 16px; gap: 12px; } .music-disc { width: 52px; height: 52px; } .now-playing h1 { font-size: 17px; } }
+.music-layout { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 20px; align-items: start; }
+.music-preview { display: grid; place-items: center; padding: 28px 16px; margin-bottom: 18px; border-radius: 14px; background: repeating-conic-gradient(#222c26 0% 25%,#1c241f 0% 50%) 0/24px 24px; }
+.music-settings { margin-top: 24px; }
+.music-steps { padding-left: 20px; margin: 0 0 24px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.music-steps li { padding: 6px 0; }
+.music-steps strong { color: var(--ink); }
+.music-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 24px; }
+.music-browser-setup { border-top: 1px solid var(--line); padding-top: 22px; margin-bottom: 24px; }
+.music-browser-setup .field { margin-top: 18px; }
+.music-browser-setup .section-note { margin: 14px 0; }
+@media (max-width: 1100px) { .music-layout { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 400px) { .music-artwork { width: 52px; height: 52px; } }

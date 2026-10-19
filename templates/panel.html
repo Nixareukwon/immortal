@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{csrf_token}}">
+  <meta name="theme-color" content="#0b0e14">
+  <title>IMMORTAL — студия управления эфиром</title>
+  <link rel="stylesheet" href="/static/panel.css?v=7">
+  <link rel="stylesheet" href="/static/studio.css?v=4">
+  <link rel="stylesheet" href="/static/music.css?v=2">
+  <link rel="icon" href="/static/mark.svg?v=3" type="image/svg+xml">
+  <script src="/static/twitch.js?v=3" defer></script>
+  <script src="/static/panel.js?v=11" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Навигация панели">
+      <div class="header-main">
+        <a class="brand" href="#overview" aria-label="IMMORTAL — обзор">
+          <img class="brand-mark" src="/static/mark.svg?v=3" width="34" height="34" alt="">
+          <span>immortal<span class="brand-caption">STREAM CONTROL</span></span>
+        </a>
+        <button class="icon-button sidebar-close" id="menu-close" type="button" aria-label="Закрыть меню"><span data-icon="close"></span></button>
+        <div class="sidebar-channel" id="channel-switcher">
+          <button class="channel-switch-button" id="channel-switch" type="button" data-action="toggle-channels" aria-expanded="false" aria-haspopup="listbox" aria-controls="channel-menu">
+            <span class="channel-avatar" data-icon="twitch"></span>
+            <span class="channel-switch-text"><span class="workspace-caption">Ваш Twitch-канал</span><strong id="sidebar-channel-name">Мой канал</strong></span>
+            <span class="channel-chevron" data-icon="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="channel-menu" id="channel-menu" role="listbox" aria-label="Выбор канала"></div>
+        </div>
+      </div>
+      <nav class="primary-nav" id="navigation" aria-label="Разделы панели">
+        <p class="nav-label">Управление</p>
+        <a href="#overview" data-view="overview" class="nav-link active"><span data-icon="dashboard"></span>Обзор</a>
+        <a href="#commands" data-view="commands" class="nav-link"><span data-icon="terminal"></span>Команды<span class="nav-count" id="nav-command-count"></span></a>
+        <a href="#timers" data-view="timers" class="nav-link"><span data-icon="clock"></span>Таймеры</a>
+        <a href="#moderation" data-view="moderation" class="nav-link"><span data-icon="shield"></span>Модерация</a>
+        <p class="nav-label">Сообщество</p>
+        <a href="#users" data-view="users" class="nav-link"><span data-icon="users"></span>Зрители и баллы</a>
+        <a href="#quotes" data-view="quotes" class="nav-link"><span data-icon="quote"></span>Цитаты</a>
+        <a href="#categories" data-view="categories" class="nav-link"><span data-icon="layers"></span>Категории</a>
+        <p class="nav-label">Ресурсы</p>
+        <a href="#music" data-view="music" class="nav-link" data-owner-only hidden><span data-icon="music"></span>Музыка для OBS</a>
+        <a href="/access" class="nav-link"><span data-icon="shield"></span>Доступ к панели</a>
+        <a href="#reference" data-view="reference" class="nav-link"><span data-icon="book"></span>Справочник</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-runtime"><span class="runtime-avatar" data-icon="bot" aria-hidden="true"></span><div><strong id="sidebar-nick">Twitch-бот</strong><span class="runtime-status"><span class="sidebar-led"></span><span id="sidebar-state" role="status">Подключение панели…</span></span></div></div>
+        <button class="logout-button" id="logout" type="button"><span data-icon="logout"></span><span>Выйти из панели</span></button>
+      </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-location">
+          <button class="icon-button mobile-menu" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="sidebar" type="button"><span data-icon="menu"></span></button>
+          <span class="breadcrumb-root">Рабочее пространство</span>
+          <span class="breadcrumb-divider" data-icon="chevron-right"></span>
+          <span id="breadcrumb-current">Обзор</span>
+        </div>
+        <div class="topbar-right">
+          <span class="topbar-date" id="current-date"></span>
+          <button class="icon-button" id="refresh" type="button" aria-label="Обновить данные" title="Обновить данные"><span data-icon="refresh"></span></button>
+          <span class="topbar-divider"></span><span class="profile-avatar" aria-label="Immortal">I</span>
+        </div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading">
+          <div><p class="eyebrow" id="page-eyebrow">ВАШ ЦЕНТР УПРАВЛЕНИЯ</p><h1 id="page-title">Обзор</h1><p class="page-subtitle" id="page-description">Ваш бот, чат и сообщество — в одном месте.</p></div>
+          <div class="page-actions">
+            <label class="search-field"><span data-icon="search"></span><input id="search" type="search" placeholder="Поиск по разделу…" aria-label="Поиск по разделу" autocomplete="off"><kbd>/</kbd></label>
+            <button class="button primary" id="page-add" hidden type="button"><span data-icon="plus"></span><span>Добавить</span></button>
+          </div>
+        </div>
+        <div id="connection-error" class="error-banner" role="alert" hidden></div>
+        <div id="content" aria-busy="true"><div class="loading-state" role="status"><span class="spinner"></span><p>Подготавливаем студию…</p></div></div>
+      </main>
+      <footer class="page-footer"><span>immortal <span class="footer-dot">/</span> Ваш эфир. Ваши правила.</span><span class="sync-status" id="sync-status" role="status">Подключение к панели</span></footer>
+    </div>
+  </div>
+  <dialog id="editor" aria-labelledby="dialog-title">
+    <form id="editor-form">
+      <header class="dialog-heading"><div><p class="eyebrow" id="dialog-eyebrow">НАСТРОЙКИ</p><h2 id="dialog-title"></h2></div><button class="icon-button" type="button" id="dialog-close" aria-label="Закрыть"><span data-icon="close"></span></button></header>
+      <div id="dialog-fields" class="dialog-fields"></div>
+      <p id="dialog-error" class="form-error" role="alert" hidden></p>
+      <footer class="dialog-footer"><button class="button secondary" type="button" id="dialog-cancel">Отмена</button><button class="button primary" type="submit" id="dialog-submit">Сохранить</button></footer>
+    </form>
+  </dialog>
+  <dialog id="confirm" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+    <form id="confirm-form" novalidate>
+      <span class="confirm-icon" data-icon="trash"></span>
+      <h3 id="confirm-title">Подтвердите удаление</h3>
+      <p id="confirm-text"></p>
+      <div class="confirm-actions">
+        <button class="button secondary" type="button" id="confirm-cancel" autofocus>Отмена</button>
+        <button class="button primary danger" type="submit" id="confirm-ok">Удалить</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast-container" id="toasts" aria-live="polite" aria-atomic="false"></div>
+  <noscript>Для работы панели включите JavaScript в настройках браузера.</noscript>
+</body>
+</html>

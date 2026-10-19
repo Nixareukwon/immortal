@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Immortal · Сейчас играет</title>
+  <link rel="stylesheet" href="/static/music.css?v=2">
+  <script src="/static/music_overlay.js?v=2" defer></script>
+</head>
+<body class="music-overlay">
+  <article class="now-playing" id="player" hidden aria-label="Сейчас играет">
+    <div class="music-artwork"><div class="music-disc" aria-hidden="true"><span>♪</span></div><img id="track-cover" alt="Обложка трека" hidden></div>
+    <div class="music-details">
+      <div class="music-eyebrow"><span id="play-label">СЕЙЧАС ИГРАЕТ</span><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+      <h1 id="track-title"></h1>
+      <p id="track-artist"></p>
+      <div class="music-timeline" id="timeline"><div class="music-progress"><span id="progress"></span></div><span id="track-time"></span></div>
+    </div>
+  </article>
+</body>
+</html>

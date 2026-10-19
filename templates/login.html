@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{csrf_token}}">
+  <meta name="theme-color" content="#0b0e14">
+  <title>Вход · Immortal</title>
+  <link rel="icon" href="/static/mark.svg?v=3" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/panel.css?v=7">
+  <link rel="stylesheet" href="/static/studio.css?v=4">
+  <script src="/static/twitch.js?v=3" defer></script>
+  <script src="/static/login.js?v=3" defer></script>
+</head>
+<body class="login-page">
+  <div class="login-layout">
+    <section class="login-art" aria-label="Immortal — панель Twitch-бота">
+      <div class="brand"><img class="brand-mark" src="/static/mark.svg?v=3" alt="" width="34" height="34"><span>immortal<span class="brand-caption">Панель Twitch-бота</span></span></div>
+      <img class="automation-art" src="/static/automation.svg?v=3" alt="" width="480" height="400">
+      <h2>Ваш эфир.<br>Ваши правила.</h2>
+      <p>Команды, автоматизация и модерация.<br>Больше времени для вашего сообщества.</p>
+    </section>
+    <main class="login-card">
+      <div class="brand"><img class="brand-mark" src="/static/mark.svg?v=3" alt="" width="34" height="34"><span>immortal</span></div>
+      <h1>С возвращением</h1>
+      <p class="lead">Войдите, чтобы управлять ботом<br>и подготовиться к следующему эфиру.</p>
+      <form id="login">
+        <label class="field"><span class="field-label">Логин</span><input name="username" autocomplete="username" placeholder="Ваш логин" maxlength="32" autofocus></label>
+        <label class="field" for="password"><span class="field-label">Пароль</span><input id="password" name="password" type="password" placeholder="Введите пароль" autocomplete="current-password" required aria-describedby="login-error"></label>
+        <button class="button primary" type="submit">Войти в панель <span aria-hidden="true">→</span></button>
+        <p class="form-error" id="login-error" role="alert" hidden></p>
+      </form>
+      <div class="twitch-entry" {{twitch_hidden}}>
+        <p class="twitch-divider"><span>или</span></p>
+        <button class="button secondary" id="twitch-login" type="button">Войти через Twitch</button>
+        <p class="section-note">Подтвердите вход на twitch.tv по одноразовому коду — адрес панели при этом не важен.</p>
+      </div>
+      <p class="foot">Первый вход? Откройте приглашение от владельца и создайте аккаунт. Для владельца — логин owner и пароль панели.</p>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.env
+.hosting/
+.venv/
+__pycache__/
+*.pyc
+bot.db
+bot.db-*
+tools/cloudflared.exe
+.idea/

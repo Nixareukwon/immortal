@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{csrf_token}}">
+  <meta name="theme-color" content="#0b0e14">
+  <title>Вход · Immortal</title>
+  <link rel="icon" href="/static/mark.svg?v=3" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/panel.css?v=7">
+  <link rel="stylesheet" href="/static/studio.css?v=4">
+  <script src="/static/twitch.js?v=3" defer></script>
+  <script src="/static/accounts.js?v=4" defer></script>
+</head>
+<body class="login-page">
+  <div class="login-layout">
+    <section class="login-art" aria-label="Immortal — панель Twitch-бота">
+      <div class="brand"><img class="brand-mark" src="/static/mark.svg?v=3" alt="" width="34" height="34"><span>immortal<span class="brand-caption">Панель Twitch-бота</span></span></div>
+      <img class="automation-art" src="/static/automation.svg?v=3" alt="" width="480" height="400">
+      <h2>Ваш эфир.<br>Ваши правила.</h2>
+      <p>Команды, автоматизация и модерация.<br>Больше времени для вашего сообщества.</p>
+    </section>
+    <main class="login-card access-card">
+      <div class="brand"><img class="brand-mark" src="/static/mark.svg?v=3" alt="" width="34" height="34"><span>immortal</span></div>
+      <h1>Доступ к панели</h1>
+      <p class="lead">Пригласите человека управлять вашим ботом — он сам придумает логин и пароль.</p>
+      <section class="access-block twitch-block">
+        <div class="block-head">
+          <span class="block-icon"><svg class="twitch-glyph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg></span>
+          <div>
+            <h2>Мой Twitch</h2>
+            <p class="section-note" id="twitch-state">Проверяем состояние…</p>
+          </div>
+        </div>
+        <div class="twitch-actions">
+          <button id="twitch-link" class="button primary" type="button" hidden>Привязать Twitch</button>
+          <button id="twitch-unlink" class="button secondary" type="button" hidden>Отвязать</button>
+        </div>
+      </section>
+      <div id="access-controls" hidden>
+        <section class="access-block">
+          <div class="block-head">
+            <span class="block-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></svg></span>
+            <div>
+              <h2>Приглашение</h2>
+              <p class="section-note">Ссылка действует 24 часа и используется один раз.</p>
+            </div>
+          </div>
+          <button id="invite" class="button primary">Создать приглашение</button>
+          <label class="field invite-result" id="invite-result" hidden>
+            <span class="field-label">Скопируйте и отправьте ссылку</span>
+            <input id="invite-url" readonly>
+            <button class="button" id="copy-invite" type="button">Копировать ссылку</button>
+          </label>
+        </section>
+        <section class="access-block">
+          <div class="block-head">
+            <span class="block-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div>
+              <h2>Личные аккаунты <span class="count-pill" id="account-count">0</span></h2>
+              <p class="section-note">Все, у кого есть доступ к панели.</p>
+            </div>
+          </div>
+          <div id="account-list" class="account-list"></div>
+        </section>
+      </div>
+      <p id="message" role="status"></p>
+      <div class="access-foot">
+        <a class="back-link" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Вернуться в панель</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

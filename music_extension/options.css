@@ -1,0 +1,2 @@
+body { width: 360px; max-width: calc(100vw - 48px); margin: 24px; background: #151f19; color: #e2f3e8; font: 14px/1.6 system-ui,sans-serif; }
+h1 { font-size: 24px; } p { color: #a5bdaf; } input,button { box-sizing: border-box; width: 100%; padding: 12px; border-radius: 9px; margin-top: 10px; border: 1px solid #446451; background: #0e1712; color: #e2f3e8; } button { background: #a9e8cb; color: #14291e; cursor: pointer; font-weight: 600; }
